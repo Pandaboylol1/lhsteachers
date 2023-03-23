@@ -1,0 +1,73 @@
+{% extends "base.html" %} {% block title %}Admin{% endblock %}
+
+{% block content %}
+<br />
+
+<center><h1>Admin Console</h1></center>
+<center><h2>Users:</h2></center>
+<ul class="list-group list-group-flush" id="users">
+  {% for user in user_list %}
+  <li class="list-group-item">{{ user['id'], user['first_name'], user['email'] }}</li>
+  {% endfor %}
+</ul>
+<br />
+<form method = "POST">
+  <textarea name="delete" id="delete" class="form-control"></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Delete User</button>
+  </div>
+</form>
+<br />
+<form method="POST">
+  <h3 align="center">Add a Teacher:</h3>
+  <div class = "form-group">
+    <label>First Name</label>
+    <input class="form-control" id="first_name" name="first_name"/>
+  </div>
+  <div class = "form-group">
+    <label>Last Name</label>
+    <input type ="text" class="form-control" id="last_name" name="last_name"/>
+  </div>
+  <div class = "form-group">
+    <label>Course</label>
+    <input class="form-control" id="course" name="course"/>
+  </div>
+  <br />
+  <center><button type="submit" class ="btn btn-primary">Submit</button></center>
+</form>
+<br />
+<center><h2>Teachers:</h2></center>
+<br />
+{% for teacher in teachers %}
+  <li class="list-group-item">
+    {{ teacher.id }}: {{ teacher.first_name }} {{ teacher.last_name }}
+  </li>
+{% endfor %}
+<br />
+<form method = "POST">
+  <textarea name="deleteteacher" id="deleteteacher" class="form-control"></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Delete Teacher</button>
+  </div>
+</form>
+<!-- <center><img src="https://i.ytimg.com/vi/sxrzdev5l3A/maxresdefault.jpg" alt="W3Schools.com"></center> -->
+<br />
+<center><h2>Reviews:</h2></center>
+<br />
+{% for review in reviews %}
+  <li class="list-group-item">
+    {{ review.id }}: {{ review.review }}
+  </li>
+{% endfor %}
+<br />
+<form method = "POST">
+  <textarea name="deletereview" id="deletereview" class="form-control"></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Delete Review</button>
+  </div>
+</form>
+
+{% endblock %}

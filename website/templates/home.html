@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+
+{% block content %}
+<style>
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 96%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+</style>
+<br />
+<h1 align="center">Teachers:</h1>
+<br />
+{% for teacher in teachers %}
+  <li class="list-group-item">
+    <form method="POST">
+      {{ teacher.last_name }}
+      <input type="hidden" name="invite_id" value="{{ teacher.id }}">
+      <div class="center">
+        <button type="submit" class="btn btn-success float-right" name="submit" value="accept">Profile</button>
+      </div>
+    </form>
+  </li>
+{% endfor %}
+<br />
+
+{% endblock %}
